@@ -1,0 +1,253 @@
+body{
+	margin:0;
+}
+h1{
+	display: inline-block;
+	text-decoration: underline;
+	font-size: 330%;
+	vertical-align: middle;
+	margin-left: 40%;
+}
+.td_menu{
+	width: 50%;
+	border: 0;
+	text-align: center;
+}
+table{
+	border-collapse: collapse;
+	margin:auto;
+}
+#table_menu{
+	width: 80%;
+	position: fixed;
+	background-color: rgba(162, 189, 213, 0.9);
+	border: 2px black solid;
+	margin-left: 10%;
+	display: none;
+	z-index: 2;
+	height: 330px;
+}
+#bandeau{
+	text-align: right;
+	border: 0;
+}
+#img-para{
+	width: 5%;
+	float: right;
+	padding-top: 2%;
+	padding-right: 5%;
+	cursor: pointer;
+}
+#retour, #avance{
+	width: 35px;
+	height: 15px;
+	cursor: pointer;
+}
+#avance{
+	transform: translateY(4px);
+}
+#div1{
+	background-color: #a6c7e3
+}
+#div_svg{
+	margin-inline-start: 12%;
+	margin-block-end: 20px;
+}
+#outil_sel{
+	text-decoration: underline;
+	margin-left: 40px;
+	font-size: 20px;
+}
+#croix{
+	background-color: red;
+	padding: 4px 8px;
+	font-weight: bold;
+	border: 1px black solid;
+	margin: 10px 10px 10px 0px;
+	cursor: pointer;
+	display: inline-block;
+}
+#afficher_direct_outil{
+	cursor: pointer;
+}
+#form_bordure{
+	margin-left: 3%;
+	margin-top: 1%;
+}
+td{
+	border :1px black solid;
+}
+input{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+#div_cadre{
+	display: none;
+}
+div.compteur{
+	float:left;
+	display:inline;
+	position:relative;
+	margin: 4% 3%;
+	width:200px;
+	height:200px;
+	vertical-align: 150px;
+	margin-top: 90px;
+}
+div.compteur:first-child{
+	margin-inline-start: 25%;
+}
+#prevesu{
+	padding: 1px 26px;
+	background-color: rgb(55,55,55);
+	border: 1px rgba(0, 0, 0, 0.3) solid;
+}
+#horizon{
+	border: 1px black solid;
+	padding: 1px 2px 2px 2px;
+	cursor: pointer;
+}
+#save{
+	border: 1px black solid;
+	padding: 3px 4px 4px 4px;
+	cursor: pointer;
+	margin-inline-start: 15px;
+}
+#export{
+	border: 1px black solid;
+	padding: 3px 4px 4px 4px;
+	cursor: pointer;
+	margin-inline-start: 15px;
+	width: 16px;
+}
+#verti{
+	border: 1px black solid;
+	padding: 0px 4px 1px 1px;
+	cursor: pointer;
+	margin-inline-start: 15px;
+}
+#open{
+	border: 1px black solid;
+	padding: 3px 4px 4px 4px;
+	cursor: pointer;
+}
+#ouvrir_input {
+	display: none;
+}
+div.compteur input{
+	position:absolute;
+	top:65px;
+	left:50px;
+	font-size:60px;
+	text-align:center;
+	width:100px;
+	border:none;
+	background:none;
+	outline:none;
+	line-height:1em;
+}
+
+div.compteur canvas{
+	position:absolute;
+	top:0;
+	left:0px;
+	right:0px;
+	bottom:0px;
+}
+#div_previsu{
+	margin: 1% 6%;
+	position: absolute;
+}
+.span_crtl{
+	margin-left: 30px;
+}
+#historique{
+	overflow: scroll;
+	width: 18%;
+	height: 200px;
+	float: right;
+}
+hr{
+	border: 2px black solid;
+	margin-block-start: 2em;
+}
+#span_palette_blanc{
+	background-color: rgb(255,255,255);
+	padding: 5px 35px;
+	margin: 0px 1.5%;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+#span_palette_noir{
+	background-color: rgb(0,0,0);
+	padding: 5px 35px;
+	margin: 0px 1.5%;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	color: white;
+}
+
+#palette{
+	text-align: center;
+	margin-top: 35px;
+}
+#span_palette_rouge{
+	background-color: rgb(255,0,0);
+	padding: 5px 35px;
+	margin: 0px 1.5%;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+#span_palette_vert{
+	background-color: rgb(0,255,0);
+	padding: 5px 35px;
+	margin: 0px 1.5%;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+#span_palette_bleu{
+	background-color: rgb(0,0,255);
+	padding: 5px 35px;
+	margin: 0px 1.5%;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+#span_palette_jaune{
+	background-color: rgb(255,255,0);
+	padding: 5px 35px;
+	margin: 0px 1.5%;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+#span_palette_cyan{
+	background-color: rgb(0,255,255);
+	padding: 5px 35px;
+	margin: 0px 1.5%;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+#span_palette_magenta{
+	background-color: rgb(255,0,255);
+	padding: 5px 35px;
+	margin: 0px 1.5%;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+#tableau{
+	background-color: white;
+	box-shadow: 18px 18px 5px 1px rgba(0,0,255,0.2);
+}
+#margin{
+	margin: 0 2%;
+	font-size: 35px;
+}
+#image_outil{
+	width: 20px;
+	border: 1px black solid;
+	padding: 2px;
+	border-radius: 6px;
+}
+#image_outil2{
+	width: 20px;
+	padding: 2px;
+}

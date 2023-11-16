@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" type="image/ico" href="paint.png">
+		<link rel="stylesheet" href="paint.css">
+		<title>Paint</title>
+	</head>
+	<body>
+		<div id="div1">
+			<h1 align="center">Baint Pro ©</h1>
+			<span onclick="affiche_parametre(true);"><img id="img-para" src="parametre.png" alt="logo paramétre"></span>
+			<table id="table_menu">
+				<tr>
+					<td id="bandeau" colspan="2">
+						<span onclick="affiche_parametre(false);" id="croix">X</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="td_menu">
+						<form id="form_outil" method="post">
+							<label for="col">Nombre de colone</label>
+							<input id="col" value="50" type="number" min="3" max="300" name="col" placeholder="Entrer une taille"> <br>
+							<label for="lig">Nombre de ligne</label>
+							<input id="lig" value="20" type="number" min="3" max="300" name="lig"   placeholder="Entrer une taille"> <br>
+							<label for="stylo">Taille du stylo</label>
+							<input id="stylo" type="number" max="6" min="1" name="stylo" value="1"   placeholder="Entrer une taille de stylo"> <br>
+							<label for="durete">Dureté du stylo (0 à 1)</label>
+							<input id="durete" type="number" max="1" min="0" name="durete" value="1"   placeholder="Entrer duretée du stylo"> <br>
+							<label for="select_outil">Outil</label>
+							<select onchange="change_outil();" id="select_outil">
+								<option id="crayon" value="0">Crayon</option>
+								<option id="pdp" value="1">Pot de peinture</option>
+								<option id="cuf" value="2">Copier une forme</option>
+								<option id="pipette" value="3">Pipette</option>
+								<option id="gpdp" value="4">Grand Pot de peinture</option>
+								<option id="rectangle" value="5">Rectangle</option>
+								<option id="pinceau" value="6">Pinceau mélangeur</option>
+							</select><br>
+							<input type="button" id="btn" value="Créer le tableau" onclick="generate_table();"><br>
+							<input type="checkbox" name="coul_fond" id="coul_fond"><label>Changer la couleur de fond avec la couleur séléctionner</label><br>
+							<input type="button" value="réinitialiser les paramétres" onclick="location.reload();">
+						</form>
+					</td>
+					<td class="td_menu">
+						<form  method="post">
+							<label id="mod_bordure">Personalisation du dessin</label>
+							<div id="form_bordure">
+								<label for="tai">Taille de la cellule</label>
+								<input onchange="change_donner('tai');" id="tai" type="number" min="1" max="50" name="tai" value="20" placeholder="Entrer une taille"> <br>
+								<label for="esp_cell">Espace entre les cellules</label>
+								<input onchange="change_donner('esp_cell');" name="esp_cell" type="number" id="esp_cell" max="20" min="0" value="0" placeholder="Entrer l'espace entre les cellules en px"><br>
+								<label for="coul_brd">Couleur des bordures</label>
+								<input name="coul_brd" type="text" id="coul_brd" value="#000000" placeholder="Entrer la couleur des bordures en hexa"><br>
+								<br>
+								<label for="border">Bordure</label>
+								<input name="border" type="checkbox" id="border" onclick="diplay_Checkbox('border', 'div_bordure');" placeholder="Ajouter une bordure au cellule" checked><br>
+								<div id="div_bordure">
+									<label for="tai_border">Taille bordure</label>
+									<input onclick="change_donner('tai_border');" name="tai_border" type="number" id="tai_border" max="6" min="1" value="1" placeholder="Entrer la taille de la bordure en px"><br>
+								</div>
+								<br>
+								<label for="cadre">Cadre</label>
+								<input onclick="diplay_Checkbox('cadre', 'div_cadre');" name="cadre" type="checkbox" id="cadre" placeholder="Ajouter un cadre au dessin"><br>
+								<div id="div_cadre">
+									<label for="tai_cadre">Taille cadre</label>
+									<input onclick="change_donner('tai_cadre');" name="tai_cadre" type="number" id="tai_cadre" max="6" min="1" value="1" placeholder="Entrer la taille du cadre en px">
+								</div>
+							</div>
+						</form>
+					</td>
+				</tr>
+			</table>
+			<div id="div_svg">
+				<svg id="retour" onclick="retour();" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<title>Retour en arrière</title>
+					<g>
+						<path fill="#5f6368" fill-rule="evenodd" d="M11.5656391,4.43436088 L9,7 L16,7 L16,0 L13.0418424,2.95815758 C11.5936787,1.73635959 9.72260775,1 7.67955083,1 C4.22126258,1 1.25575599,3.10984908 0,6 L2,7 C2.93658775,4.60974406 5.12943697,3.08011229 7.67955083,3 C9.14881247,3.0528747 10.4994783,3.57862053 11.5656391,4.43436088 Z" transform="matrix(-1 0 0 1 17 5)"/>
+					</g>
+				</svg>
+				<svg onclick="avance();" id="avance" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<title>Retour en avant</title>
+					<g>
+						<path fill="#5f6368" fill-rule="evenodd" d="M11.5656391,4.43436088 L9,7 L16,7 L16,0 L13.0418424,2.95815758 C11.5936787,1.73635959 9.72260775,1 7.67955083,1 C4.22126258,1 1.25575599,3.10984908 0,6 L2,7 C2.93658775,4.60974406 5.12943697,3.08011229 7.67955083,3 C9.14881247,3.0528747 10.4994783,3.57862053 11.5656391,4.43436088 Z"/>
+					</g>
+				</svg>
+				<span onclick="retourner_dessin('vertical')"; >
+					<img title="Retourner le dessin" id="verti" alt="verticale" src="verticale.png">
+				</span>
+
+				<span onclick="retourner_dessin('horizontal')"; >
+					<img title="Retourner le dessin" id="horizon" alt="horizontale" src="horizontale.png">
+				</span>
+
+				<span onclick="downloadFiles('Mon_Image.baintmp', 'baintmp')"; >
+					<img title="Enregistrer" id="save" alt="enregistrer" src="save.png">
+				</span>
+
+				<span class="image-upload">
+					<label for="ouvrir_input">
+						<img title="Ouvrir" id="open" alt="ouvrir" src="open.png">
+					</label>
+					<input accept=".baintmp" type="file" id="ouvrir_input" >
+				</span>
+
+				<span onclick="downloadFiles('Mon_Image.svg', 'svg')"; >
+					<img title="Exporter en SVG" id="export" alt="exporter" src="export.png">
+				</span>
+
+				<span id="outil_sel">Outil sélectionner</span>
+				<span> : </span>
+				<span onclick="changer_outil_selected();" id="afficher_direct_outil"></span>
+				<span id="margin"> 	→ </span>
+				<span id="afficher_direct_outil_prochain"></span>
+			</div>
+			<div id="place_tbl"></div>
+			<div id="palette">
+				<span id="span_palette_blanc" onclick="changer_couleur_palette('span_palette_blanc');">Blanc</span>
+				<span id="span_palette_noir" onclick="changer_couleur_palette('span_palette_noir');">Noir</span>
+				<span id="span_palette_rouge" onclick="changer_couleur_palette('span_palette_rouge');">Rouge</span>
+				<span id="span_palette_bleu" onclick="changer_couleur_palette('span_palette_bleu');">Bleu</span>
+				<span id="span_palette_vert" onclick="changer_couleur_palette('span_palette_vert');">Vert</span>
+				<span id="span_palette_jaune" onclick="changer_couleur_palette('span_palette_jaune');">Jaune</span>
+				<span id="span_palette_magenta" onclick="changer_couleur_palette('span_palette_magenta');">Magenta</span>
+				<span id="span_palette_cyan" onclick="changer_couleur_palette('span_palette_cyan');">Cyan</span>
+			</div>
+			<hr>
+			<div id="div_previsu">
+				<span><b>Ctrl + Q</b> avec le stylo pour laisser appuyer</span>
+				<span class="span_crtl"><b>Ctrl + X</b> pour changer l'outil sélectionner</span>
+				<span class="span_crtl"><b>Cliquez</b> sur l'icône paramètres pour les modifier</span><br><br>
+				<span><b>Ctrl + Z</b> pour retourner en arriére</span>
+				<span class="span_crtl"><b>Ctrl + Y</b> pour annuler le retour en arriére</span>
+				<span class="span_crtl"><b>Echap</b> pour quitter les paramètres</span>
+				<br><br>
+				<label>Prévisualisation : </label><span id="prevesu"></span>
+			</div>
+			<div id="historique">
+				<p>Historique : </p>
+				<div id="liste_coul_histo"></div>
+			</div>
+			<form id="form_jauge" method="post">
+				<input onclick="charger();" id="rouge" type='text' name='compteur' value='215' class='compteur' data-min='0' data-max='255' data-color='#ff0000' data-taille='80' />
+				<input onclick="charger();" id="vert" type='text' name='compteur' value='130' class='compteur' data-min='0' data-max='255' data-color='#00ff00' data-taille='80' />
+				<input onclick="charger();" id="bleu" type='text' name='compteur' value='55' class='compteur' data-min='0' data-max='255' data-color='#0000ff' data-taille='80' />
+			</form>
+		</div>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>		<script type="text/javascript" src="paint.js"></script>
+	</body>
+</html>
